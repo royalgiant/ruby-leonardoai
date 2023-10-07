@@ -3,7 +3,7 @@ require "faraday/multipart"
 require_relative "leonardoai/version"
 
 
-module Leonardoai
+module LeonardoAI
   class Error < StandardError; end
   class ConfigurationError < Error; end
 

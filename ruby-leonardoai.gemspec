@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 require_relative "lib/ruby/leonardoai/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-leonardoai"
-  spec.version = Ruby::Leonardoai::VERSION
+  spec.version = LeonardoAI::VERSION
   spec.authors = ["Donald Lee"]
   spec.email = ["donaldlee50@gmail.com"]
 
