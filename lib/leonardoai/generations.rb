@@ -5,11 +5,11 @@ module LeonardoAI
     end
 
     def generate(parameters: {})
-      @client.json_post(path: "/images/generations", parameters: parameters)
+      @client.json_post(path: "/generations", parameters: parameters)
     end
 
     def edit(parameters: {})
-      @client.multipart_post(path: "/images/edits", parameters: open_files(parameters))
+      @client.multipart_post(path: "/edits", parameters: open_files(parameters))
     end
 
     private
@@ -19,7 +19,5 @@ module LeonardoAI
       parameters = parameters.merge(mask: File.open(parameters[:mask])) if parameters[:mask]
       parameters
     end
-
-    def 
   end
 end

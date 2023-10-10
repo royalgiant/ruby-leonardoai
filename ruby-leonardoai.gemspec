@@ -1,4 +1,4 @@
-require_relative "lib/ruby/leonardoai/version"
+require_relative "lib/leonardoai/version"
 
 Gem::Specification.new do |spec|
   spec.name = "ruby-leonardoai"

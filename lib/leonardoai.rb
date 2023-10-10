@@ -1,7 +1,9 @@
 require "faraday"
 require "faraday/multipart"
+require_relative "leonardoai/http"
+require_relative "leonardoai/client"
+require_relative "leonardoai/generations"
 require_relative "leonardoai/version"
-
 
 module LeonardoAI
   class Error < StandardError; end
@@ -13,7 +15,7 @@ module LeonardoAI
                   :extra_headers
 
     DEFAULT_API_VERSION = "v1".freeze
-    DEFAULT_URI_BASE = "https://cloud.leonardo.ai/api/rest/v1/".freeze
+    DEFAULT_URI_BASE = "https://cloud.leonardo.ai/api/rest/".freeze
     DEFAULT_REQUEST_TIMEOUT = 120
 
     def initialize
@@ -34,6 +36,18 @@ module LeonardoAI
       error_text = "LeonardoAI access token missing! See https://github.com/alexrudall/ruby-openai#usage"
       raise ConfigurationError, error_text
     end
+  end
+
+  class << self
+    attr_writer :configuration
+  end
+
+  def self.configuration
+    @configuration ||= LeonardoAI::Configuration.new
+  end
+
+  def self.configure
+    yield(configuration)
   end
 end
 
