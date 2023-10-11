@@ -8,16 +8,32 @@ module LeonardoAI
       @client.json_post(path: "/generations", parameters: parameters)
     end
 
-    def edit(parameters: {})
-      @client.multipart_post(path: "/edits", parameters: open_files(parameters))
+    def get_generation(id:)
+      @client.get(path: "/generations/#{id}")
     end
 
-    private
+    def delete_generation(id:)
+      @client.delete(path: "/generations/#{id}")
+    end
 
-    def open_files(parameters)
-      parameters = parameters.merge(image: File.open(parameters[:image]))
-      parameters = parameters.merge(mask: File.open(parameters[:mask])) if parameters[:mask]
-      parameters
+    def get_user_generations(user_id:)
+      @client.get(path: "/generations/user/#{user_id}")
+    end
+
+    def generate_texture_generation(parameters: {})
+      @client.json_post(path: "/generations-texture", parameters: parameters)
+    end
+
+    def get_texture_generation_by_model_id(model_id:)
+      @client.get(path: "/generations-texture/model/#{model_id}")
+    end
+
+    def get_texture_generation_by_id(id:)
+      @client.get(path: "/generations-texture/model/#{id}")
+    end
+
+    def delete_texture_generation(id:)
+      @client.delete(path: "/generations-texture/#{id}")
     end
   end
 end

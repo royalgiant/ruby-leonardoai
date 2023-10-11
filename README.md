@@ -134,7 +134,29 @@ puts response.dig("sdGenerationJob", "generationId")
 ```
 
 ### Model
-UNDER CONSTRUCTION
+```ruby
+# https://cloud.leonardo.ai/api/rest/v1/models-3d/upload
+
+params = {
+    :modelExtension=>"this-is-an-example", 
+    :name=>"some string"
+}
+
+response = client.models.upload_3d_model(parameters: params) 
+```
+
+```ruby
+# https://cloud.leonardo.ai/api/rest/v1/models/{id}
+
+params = {
+    :modelExtension=>"this-is-an-example", 
+    :name=>"some string"
+}
+
+response = client.models.get_custom_models_by_id(id: "your-custom-model-id-here") 
+```
+
+For more parameters, please check the API found [here](https://docs.leonardo.ai/reference/post_models-3d-upload)
 
 ### Unzoom
 UNDER CONSTRUCTION

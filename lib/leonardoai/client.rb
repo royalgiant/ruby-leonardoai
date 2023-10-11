@@ -27,5 +27,9 @@ module LeonardoAI
     def generations
       @generations ||= LeonardoAI::Generations.new(client: self)
     end
+
+    def models
+      @models ||= LeonardoAI::Models.new(client: self)
+    end
   end
 end
