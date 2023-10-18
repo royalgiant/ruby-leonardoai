@@ -4,6 +4,8 @@ require_relative "leonardoai/http"
 require_relative "leonardoai/client"
 require_relative "leonardoai/generations"
 require_relative "leonardoai/models"
+require_relative "leonardoai/variations"
+require_relative "leonardoai/datasets"
 require_relative "leonardoai/version"
 
 module LeonardoAI

@@ -31,5 +31,13 @@ module LeonardoAI
     def models
       @models ||= LeonardoAI::Models.new(client: self)
     end
+
+    def variations
+      @variations ||= LeonardoAI::Variations.new(client: self)
+    end
+
+    def datasets
+      @datasets ||= LeonardoAI::Datasets.new(client: self)
+    end
   end
 end

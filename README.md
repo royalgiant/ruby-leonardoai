@@ -109,12 +109,40 @@ LeonardoAI.configure do |config|
     } # Optional
 end
 ```
+### Running in Console
+Easily run tests in console with ```bin/console```
+
+```ruby
+# Example
+
+client = LeonardoAI::Client.new(access_token: "your-access-token-here")
+
+params = {
+    :height=>1024, 
+    :prompt=>"A ad flyer of a ninja cat, heavy texture, moonlit background, circle design, tshirt design, pen and ink style", 
+    :width=>512, :num_images=>1, 
+    :photoReal=>false, 
+    :presetStyle=>"LEONARDO", 
+    :promptMagic=>true, 
+    :promptMagicVersion=>"v2", 
+    :public=>false, 
+    :init_strength=>0.4, 
+    :sd_version=>"v2", 
+}
+
+response = client.generations.generate(parameters: params)
+puts response
+```
+
+
 
 ### Generation
 
 ChatGPT is a model that can be used to generate text in a conversational style. You can use it to [generate a response](https://platform.openai.com/docs/api-reference/chat/create) to a sequence of [messages](https://platform.openai.com/docs/guides/chat/introduction):
 
 ```ruby
+# https://docs.leonardo.ai/reference/creategeneration
+
 params = {
     :height=>1024, 
     :prompt=>"A ad flyer of a ninja cat, heavy texture, moonlit background, circle design, tshirt design, pen and ink style", 
@@ -135,7 +163,7 @@ puts response.dig("sdGenerationJob", "generationId")
 
 ### Model
 ```ruby
-# https://cloud.leonardo.ai/api/rest/v1/models-3d/upload
+# https://docs.leonardo.ai/reference/post_models-3d-upload
 
 params = {
     :modelExtension=>"this-is-an-example", 
@@ -146,7 +174,7 @@ response = client.models.upload_3d_model(parameters: params)
 ```
 
 ```ruby
-# https://cloud.leonardo.ai/api/rest/v1/models/{id}
+# https://docs.leonardo.ai/reference/getmodelbyid
 
 params = {
     :modelExtension=>"this-is-an-example", 
@@ -158,11 +186,41 @@ response = client.models.get_custom_models_by_id(id: "your-custom-model-id-here"
 
 For more parameters, please check the API found [here](https://docs.leonardo.ai/reference/post_models-3d-upload)
 
-### Unzoom
-UNDER CONSTRUCTION
+### Variation
+```ruby
+# https://docs.leonardo.ai/reference/post_variations-unzoom
+
+params = {
+    :id=>"this-is-some-id", 
+    :isVariation=>"boolean: true|false"
+}
+
+response = client.variations.create_unzoom(parameters: params) 
+```
+
+```ruby
+# https://docs.leonardo.ai/reference/getvariationbyid
+
+response = client.variations.get_variation_by_id(id: "your-variation-id-here") 
+```
 
 ### Dataset
-UNDER CONSTRUCTION
+```ruby
+# https://docs.leonardo.ai/reference/createdataset
+
+params = {
+    :name=>"this-is-some-string-id", 
+    :description=>"this-is-some-string"
+}
+
+response = client.datasets.create_dataset(parameters: params) 
+```
+
+```ruby
+# https://docs.leonardo.ai/reference/getdatasetbyid
+
+response = client.datasets.get_dataset_by_id(id: "your-dataset-id-here") 
+```
 
 ## Development
 
